@@ -1,19 +1,52 @@
-.headline {
-    display: block;
+body {
+    background: rgb(28, 28, 28);
+    padding-top: 5em;
+    display: flex;
+    flex-direction: column; /* Stacks elements vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically*/
+}
+
+
+/* Headline receives a typerwriter animation because why not?*/
+.headline h1 {
+    color: white;
+    position: relative;
     text-align: center;
+    overflow: hidden; /* Don't show content until animation */
+    border-right: .15em solid purple; /* Typewriter cursor */
+    white-space: nowrap; /* Ensures content stays on a single line */
+    margin: 0 auto; /* For scrolling effect during the typing animation */
+    letter-spacing: .1em;
+    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+    
+}
+
+.headline p {
+    font-size: 20px;
+    color: white;
+}
+.headline {
+    margin-bottom: 1em; /* Some distance between headline and buttons */
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to {border-color: transparent } 50% { border-color: purple; }
 }
 
 .controlbox {
-    margin: auto; /* center div to middle of website */
-    width: 160px;
-    height: 50px;
-    border: solid 2px;
-    border-radius: 20px;
-    text-align:center;
-
+    display: flex;
+    align-items: center; /* Center buttons horizontally */
+    margin-top: 1em; /* Space between headline and buttons */
 }
 
 .controlbox button {
+    position: relative;
     align-items: center;
     background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
     border: 0;
@@ -35,6 +68,7 @@
     touch-action: manipulation;
     white-space: nowrap;
     cursor: pointer;
+    margin: 0 0.5em;
 }
 
 .controlbox button:active, .controlbox button:hover {
@@ -53,10 +87,3 @@
 .controlbox button:hover span {
     background: none;
 }
-
-/*@media (min-width: 768px) {
-    .controlbox button {
-        font-size: 24px;
-        min-width: 196px;
-    }
-}*/
