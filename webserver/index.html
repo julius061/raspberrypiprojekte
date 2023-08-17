@@ -13,11 +13,11 @@
         <div class="controlbox">
             <!-- Please don't judge me for this, but this is the only way with http.server to have client side js communicate with server side python ._. -->
             <!-- When a button is clicked the according hidden input value is changed, so that our python script can look for the values of the hidden inputs on get request -->
-            <form action="index.html">
+            <form >
                 <input id="onButtonBool" type="hidden" name="isButtonOnPressed" value="false">
                 <input id ="offButtonBool" type="hidden" name="isButtonOffPressed" value="false">
-                <button id="onButton" type="submit"><span class="text">LED on</span></button>
-                <button id="offButton" type="submit"><span class="text">LED off</span></button>
+                <button id="onButton" type="button"><span class="text">LED on</span></button>
+                <button id="offButton" type="button"><span class="text">LED off</span></button>
             </form>
         </div>
     </body>
