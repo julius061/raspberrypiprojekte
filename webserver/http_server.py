@@ -1,16 +1,17 @@
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 # This is definitely not the smartest way to solve this problem because there is no good way to do client / server communication trough http.server. It would be much smarter
 # to use Flask or Django, however it works in this case and if not scaled, fits our needs as of right now and is more lightweight
 
 import http.server
 import socketserver
 
-HOST_NAME = "127.0.0.1"
-HOST_PORT = 8080
+HOST_NAME = str(input("Please enter the host IP --> "))
+HOST_PORT = int(input("Please enter the host Port --> "))
 
+OUT = GPIO.OUT
 LED = 16 # For this example, we will use the website to control a single LED, which should be at GPIO16 (BCM)
-# GPIO.setmode(GPIO.BCM)
-# GPIO.setup(17, OUT)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(LED, OUT)
 
 class Handler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
