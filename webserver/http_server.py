@@ -1,23 +1,20 @@
-import RPi.GPIO as GPIO
-from http.server import BaseHTTPRequestHandler, HTTPServer
-import time
+#import RPi.GPIO as GPIO
+import http.server
+import socketserver
 
-hostname = "127.0.0.1"
-hostport = 8000
+HOST_NAME = "127.0.0.1"
+HOST_PORT = 8080
 
-class WebServer(BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200) # 200 = OK
-        self.send_header("Content-type", "text/html")
-        self.end_headers()
-        self.wfile.write(bytes(content, "utf-8"))
+LED = 16 # For this example, we will use the website to control a single LED, which should be at GPIO16 (BCM)
+# GPIO.setmode(GPIO.BCM)
+# GPIO.setup(17, OUT)
 
-if __name__ == '__main__':
-    webServer = HTTPServer((hostname, hostport), WebServer)
-    print("Server started on http://%s:%s" % (hostname, hostport))
+Handler = http.server.SimpleHTTPRequestHandler
 
+with socketserver.TCPServer((HOST_NAME, HOST_PORT), Handler) as httpd:
     try:
-        webServer.serve_forever()
+        print("Webserver started at %s:%s." % (HOST_NAME, HOST_PORT))
+        httpd.serve_forever()
     except KeyboardInterrupt:
-        webServer.server_close()
-        print("Server stopped by user.")
+        print("Webserver stopped by user.")
+        httpd.server_close()
