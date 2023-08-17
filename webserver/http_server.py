@@ -4,18 +4,14 @@ import RPi.GPIO as GPIO
 
 import http.server
 import socketserver
+import user_input
 
-HOST_NAME = str(input("Please enter the host IP --> "))
-HOST_PORT = int(input("Please enter the host Port --> "))
-
-# saves us from writing GPIO. each time
-OUT = GPIO.OUT
-LOW = GPIO.LOW
+HOSTNAME, HOSTPORT = user_input.getUserInput()
+LED = 16
 HIGH = GPIO.HIGH
-LED = 16 # For this example, we will use the website to control a single LED, which should be at GPIO16 (BCM)
+LOW = GPIO.LOW
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(LED, OUT)
-
+GPIO.setup(LED, GPIO.OUT)
 class Handler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path.find("isButtonOnPressed=true") != -1:
@@ -26,10 +22,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             GPIO.output(LED, LOW)
         return super().do_GET()
      
-with socketserver.TCPServer((HOST_NAME, HOST_PORT), Handler) as httpd:
+with socketserver.TCPServer((HOSTNAME, HOSTPORT), Handler) as httpd:
     try:
-        print("Webserver started at %s:%s." % (HOST_NAME, HOST_PORT))
+        print("Webserver started at %s:%s." % (HOSTNAME, HOSTPORT))
         httpd.serve_forever()
     except KeyboardInterrupt:
         print("Webserver stopped by user.")
         httpd.server_close()
+
