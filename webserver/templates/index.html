@@ -6,6 +6,12 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
 	</head>
 	<body>
+		<div class="navbar">
+		   <ul>
+			   <li><a id="active" href="{{ url_for('index') }}">Home</a></li>
+			   <li><a href="{{ url_for('settings') }}">Settings</a></li>
+		   </ul>
+		</div>
 		<h1>Welcome to the RaspberryPi Webinterface!</h1>
 		<script src="{{ url_for('static', filename='js/buttonHandler.js') }}"></script>
 	</body>

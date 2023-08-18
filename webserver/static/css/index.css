@@ -1,7 +1,42 @@
 body {
-	background-color: rgb(28, 28, 28);
+	background-color: rgb(23, 23, 23);
+}
+
+ul {
+	left: 0;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background-color: rgb(20,20,20);
+}
+
+li {
+	float:left;
+	border-right: 1px solid white;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+li a:hover {
+	background-color: rgb(30, 30, 30);
+}
+
+#active {
+	color: #4CAF50;
 }
 
 h1 {
-	color: red;
+	margin-top: 45px;
+	text-align: center;
+	color: white;
 }

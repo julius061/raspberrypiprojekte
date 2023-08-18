@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>RaspberryPi Webinterface - Settings</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
+	</head>
+	<body>
+		<div class="navbar">
+			<ul>
+				<li><a href="{{ url_for('index') }}">Home</a></li>
+				<li><a id="active" href="{{ url_for('settings') }}">Settings</a></li>
+			</ul>
+		</div>
+		<h1>Settings</h1>
+	</body>
+</html>
+
