@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 
 def create_app():
     
@@ -11,5 +11,12 @@ def create_app():
     @app.route("/settings")
     def settings():
         return render_template('settings.html')
-    
+   
+    @app.route("/send-variable", methods=['POST'])
+    def send_variable():
+        data = request.json
+        variable = data.get('variable')
+        print("received variable: " , variable)
+        response = {"message" : "Variable received 200"}
+        return jsonify(response)
     return app

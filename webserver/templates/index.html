@@ -13,6 +13,15 @@
 		   </ul>
 		</div>
 		<h1>Welcome to the RaspberryPi Webinterface!</h1>
+		<button id="test-btn">Send test var</button>
+		<form>
+			<input id="add-component-input" type="text">Component GPIO Pin</input>
+			<select name="component-type" id="component-type">
+				<option value="button_on">On Button</option>
+				<option value="button_off">Off Button</option>
+			</select>
+			<button id="add-component-btn" type="button">Add</button>
+		</form>
 		<script src="{{ url_for('static', filename='js/buttonHandler.js') }}"></script>
 	</body>
 
