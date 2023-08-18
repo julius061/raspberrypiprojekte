@@ -12,14 +12,6 @@ def create_app():
     def settings():
         return render_template('settings.html')
    
-    @app.route("/send-variable", methods=['POST'])
-    def send_variable():
-        data = request.json
-        variable = data.get('variable')
-        print("received variable: " , variable)
-        response = {"message" : "Variable received 200"}
-        return jsonify(response)
-
     @app.route("/add-button", methods=['POST'])
     def add_button():
         # TODO: error handling for wrong input
