@@ -38,12 +38,14 @@ def checkSettings():
             print(STATUS_JSON_ERROR)
             exit(1)
 
+
+app = create_app()
 if __name__ == '__main__':
     try:
         config = checkSettings()
-        app = create_app()
+    
         app.run(host=config['hostname'], port=config['port'])
         
     except:
-        print(f"Error with {SETTINGS_FILE}. Try to make a copy of it and generate a new one.") 
+        print(STATUS_JSON_ERROR) 
         exit(1)
