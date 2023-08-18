@@ -2,7 +2,7 @@ from flask import Flask
 from app import create_app
 import json
 import os, io, sys
-from settings import checkSettings
+from settings_handler import checkSettings
 
 app = create_app()
 

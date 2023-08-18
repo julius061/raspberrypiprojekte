@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 
 def create_app():
+    
     app = Flask(__name__, template_folder='templates')
 
     @app.route("/")
@@ -10,4 +11,5 @@ def create_app():
     @app.route("/settings")
     def settings():
         return render_template('settings.html')
+    
     return app
