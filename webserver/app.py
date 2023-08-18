@@ -19,4 +19,14 @@ def create_app():
         print("received variable: " , variable)
         response = {"message" : "Variable received 200"}
         return jsonify(response)
+
+    @app.route("/add-button", methods=['POST'])
+    def add_button():
+        # TODO: error handling for wrong input
+        data = request.json
+        pinNum = int(data.get('PinNum'))
+        content_type = data.get('ComponentType')
+        response = {"message": "Received."}
+        return jsonify(response)
+
     return app

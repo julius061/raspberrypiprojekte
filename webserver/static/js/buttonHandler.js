@@ -12,7 +12,15 @@ function addComponent() {
 		"PinNum" : document.getElementById("add-component-input").value,
 		"ComponentType" : document.getElementById("component-type").value,
 	};
-	console.log(component_data);
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "/add-button", true);
+	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState === 4 && xhr.status === 200) {
+		
+		}
+	};
+	xhr.send(JSON.stringify((component_data)));
 }
 
 function sendDataToServer() {
