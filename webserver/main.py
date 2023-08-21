@@ -2,6 +2,7 @@ from flask import Flask
 from app import create_app
 import json
 import os, io, sys
+import RPi.GPIO as GPIO
 from settings_handler import checkSettings
 from gpio_handler import setup_gpio
 

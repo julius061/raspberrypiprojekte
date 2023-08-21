@@ -13,15 +13,19 @@
 		   </ul>
 		</div>
 		<h1>Welcome to the RaspberryPi Webinterface!</h1>
+		<div id="input-field">
 		<form>
-			<input id="add-component-input" type="text">Component GPIO Pin</input>
+			<input id="add-component-input" type="text"></input>
 			<select name="component-type" id="component-type">
-				<option value="button_on">On Button</option>
-				<option value="button_off">Off Button</option>
+				<option value="LED">LED</option>
+				<option value="TODO">TODO</option>
 			</select>
-			<button id="add-component-btn" type="button">Add</button>
+			<button id="add-component-btn" class="component-btn" type="button">Add</button>
+			<button id="del-component-btn" class="component-btn" type="button">Del</button>
 		</form>
+		</div>
 		<div id="content-field">
+			<!-- Content will be created dynamically  -->
 		</div>
 		<script src="{{ url_for('static', filename='js/buttonHandler.js') }}"></script>
 	</body>

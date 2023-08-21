@@ -7,14 +7,9 @@ def setup_gpio():
     GPIO.setwarnings(False)
     print(f"{PREFIX} GPIO setup complete.")
 
-def handle_gpio_cmd(pinNum, command):
+def handle_gpio_cmd(pinNum):
     GPIO.setup(pinNum, GPIO.OUT)
-    if command == "off":
+    if GPIO.input(pinNum):
         GPIO.output(pinNum, GPIO.LOW)
-        print(f"{PREFIX} GPIO {pinNum} off")
-    elif command == "on":
-        GPIO.output(pinNum, GPIO.HIGH)
-        print(f"{PREFIX} GPIO {pinNum} on")
     else:
-        print("There was an error with your input.")
-
+        GPIO.output(pinNum, GPIO.HIGH)

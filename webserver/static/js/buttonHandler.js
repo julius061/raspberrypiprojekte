@@ -2,73 +2,64 @@ document.getElementById("add-component-btn").addEventListener("click", function(
 	addComponent();
 });
 
-function addComponent() {
+document.getElementById("del-component-btn").addEventListener("click", function() {
+	delComponent();
+});
 
+let buttonList = []; // list of all buttons to be able to check for duplicates
+
+function addComponent() {
+	let isInList = false;
 	// get component data from frontend for AJAX POST request
 	var component_data = {
 		"PinNum" : document.getElementById("add-component-input").value,
 		"ComponentType" : document.getElementById("component-type").value,
 	};
+	for(var i = 0; i < buttonList.length; i++) {
+	   if(buttonList[i] === `buttonfor${component_data.PinNum}`) {
+	   	isInList = true;
+	   }
+	}
+	if(isInList) {
 	
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", "/add-button", true);
-	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-	xhr.onreadystatechange = function() {
-		if(xhr.readyState === 4 && xhr.status === 200) {
-			// not needed as of right now
-		}
-	};
-	// send AJAX POST request with component data, ( handling happens @app.route("add-button") )
-	xhr.send(JSON.stringify((component_data)));
-	
+	} else {
+	buttonList.push(`buttonfor${component_data.PinNum}`);
 	var new_button = document.createElement("button");
-
-	if(component_data.ComponentType === "button_on") {
-		button_name = `Toggle PIN ${component_data.PinNum} on`;
-		new_button.innerHTML = button_name;
+	new_button.classList.add('control_buttons');
+	new_button.setAttribute("id", `buttonfor${component_data.PinNum}`);
+	console.log(new_button);
+	button_name = `Toggle PIN ${component_data.PinNum}`;
+	new_button.innerHTML = button_name;
 		
-		// Send AJAX request to handle buttons GPIO function
-        	new_button.onclick = function() {
-                let GPIOxhr = new XMLHttpRequest();
-                GPIOxhr.open("POST", "/handle-gpio", true);
-                GPIOxhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                GPIOxhr.onreadystatechange = function() {
-                        if(GPIOxhr.readyState === 4 && GPIOxhr.status === 200) {
-                                // not needed as of right now
-                        }
+	// Send AJAX request to handle buttons GPIO function
+        new_button.onclick = function() {
+               	let GPIOxhr = new XMLHttpRequest();
+               	GPIOxhr.open("POST", "/handle-gpio", true);
+               	GPIOxhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+               	GPIOxhr.onreadystatechange = function() {
+                if(GPIOxhr.readyState === 4 && GPIOxhr.status === 200) {
+                               // not needed as of right now
+                }
                 };
-                var gpio_data = {
-			"PinNum" : component_data.PinNum,
-			"Command" : "on",
-		};
-		console.log("debug81273217");
-		console.log(gpio_data);
-		GPIOxhr.send(JSON.stringify((gpio_data)));
-	};
-	} else if(component_data.ComponentType === "button_off") {
-
-		button_name = `Toggle PIN ${component_data.PinNum} off`;
-		new_button.innerHTML = button_name;
- 		// Send AJAX request to handle buttons GPIO function
-        	new_button.onclick = function() {
-                let GPIOxhr = new XMLHttpRequest();
-                GPIOxhr.open("POST", "/handle-gpio", true);
-                GPIOxhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                GPIOxhr.onreadystatechange = function() {
-                        if(GPIOxhr.readyState === 4 && GPIOxhr.status === 200) {
-                                // not needed as of right now
-                        }
-                };
+                
 		var gpio_data = {
 			"PinNum" : component_data.PinNum,
-			"Command" : "off",
 		};
-		console.log(gpio_data);
+		
 		GPIOxhr.send(JSON.stringify((gpio_data)));
-	
-		}
 	};
-
-	var container = document.getElementById("content-field");
-	container.appendChild(new_button);
+		var container = document.getElementById("content-field");
+		container.appendChild(new_button);
+	} 
 }
+
+function delComponent() {
+	let componentName = `buttonfor${document.getElementById("add-component-input").value}`;
+	if(buttonList.includes(componentName)) {
+		var component = document.getElementById(componentName);
+		buttonList.splice(buttonList.indexOf(componentName), 1);
+		return component.parentNode.removeChild(component);
+	} else {
+	}
+}
+
