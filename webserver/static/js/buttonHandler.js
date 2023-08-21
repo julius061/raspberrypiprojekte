@@ -19,16 +19,18 @@ function addComponent() {
 	xhr.send(JSON.stringify((component_data)));
 	
 	var new_button = document.createElement("button");
-	var parsedData = JSON.parse(component_data);
+	console.log(component_data);
+	var parsedData = component_data;
+	console.log(parsedData);
 	if(parsedData.ComponentType === "button_on") {
-		button_name = ```Toggle PIN {parsedData.PinNum}```;
-		new_button.textContent = button_name;
+		button_name = `Toggle PIN ${parsedData.PinNum} on`;
+		new_button.innerHTML = button_name;
 	} else if(parsedData.ComponentType === "button_off") {
-		button_name = ```Toggle PIN {parsedData.PinNum} off}```;
-		new_button.textContent = button_name;
+
+		button_name = `Toggle PIN ${parsedData.PinNum} off`;
+		new_button.innerHTML = button_name;
 	}
-	console.log("debug123");
-	button.onclick = function() {
+	new_button.onclick = function() {
 		console.log("debug"); // TODO: actual AJAX request to server to handle GPIO
 	};
 
