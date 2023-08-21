@@ -36,17 +36,33 @@ li a:hover {
 	color: #5E5DF0;
 }
 
+
 h1 {
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-family: Helvetica, sans-serif;
 	text-align: center;
 	color: #5E5DF0;
 	padding-top: 55px;
 }
 
 p {
+	font-family: "Lucida Console";
 	color: white;
 	text-align: center;
+	color: white;
 }
 
-.information-content {
-	text-align: center;
+#information-content {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	border-radius: 999px;
+	transform: translate(-50%, -50%);
+	border: 2px solid white;
+	padding: 12px;
+	
+	
 }
