@@ -5,28 +5,37 @@
 		<title>RaspberryPi Webinterface</title>
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
 	</head>
+
 	<body>
 		<div class="navbar">
-		   <ul>
+		
+			<ul>
 			   <li><a id="active" href="{{ url_for('index') }}">Home</a></li>
 			   <li><a href="{{ url_for('settings') }}">Settings</a></li>
 		   </ul>
+		
 		</div>
-		<h1>Welcome to the RaspberryPi Webinterface!</h1>
+		
+		<h1>RaspberryPi Webinterface!</h1>
+		
 		<div id="input-field">
-		<form>
-			<input id="add-component-input" type="text"></input>
-			<select name="component-type" id="component-type">
-				<option value="LED">LED</option>
-				<option value="TODO">TODO</option>
-			</select>
-			<button id="add-component-btn" class="component-btn" type="button">Add</button>
-			<button id="del-component-btn" class="component-btn" type="button">Del</button>
+		
+			<form>
+			
+				<input id="add-component-input" type="text"></input>
+				<select name="component-type" id="component-type">
+					<option value="LED">LED</option>
+					<option value="TODO">TODO</option>
+				</select>
+				<button id="add-component-btn" class="component-btn" type="button">Add</button>
+				<button id="del-component-btn" class="component-btn" type="button">Del</button>
 		</form>
+
 		</div>
 		<div id="content-field">
 			<!-- Content will be created dynamically  -->
 		</div>
+
 		<script src="{{ url_for('static', filename='js/buttonHandler.js') }}"></script>
 	</body>
 

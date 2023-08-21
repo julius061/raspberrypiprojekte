@@ -3,7 +3,6 @@ body {
 }
 
 ul {
-	left: 0;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -15,7 +14,7 @@ ul {
 }
 
 li {
-	float:left;
+	float:right;
 	border-right: 1px solid #5E5DF0;
 }
 
@@ -43,6 +42,7 @@ h1 {
 	color: white;
 	font-family: Verdana, sans-serif;
 }
+
 #add-component-input {
 	border: 0;
 	background-color: rgb(28, 28, 28);
@@ -50,19 +50,18 @@ h1 {
 	font-size: 25px;
 }
 
-#input-field {
-	text-align: center;
-}
-
-
 #add-component-input:focus {
 	outline: none;
+}
+
+#input-field {
+	text-align: center;
 }
 
 select {
 	background-color: rgb(28, 28, 28);
 	color: #5E5DF0;
-	font-size: 20px;
+	font-size: 25px;
 	border: 0;
 }
 
