@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-
+from gpio_handler import handle_gpio_cmd
 def create_app():
     
     app = Flask(__name__, template_folder='templates')
@@ -18,7 +18,15 @@ def create_app():
         data = request.json
         pinNum = int(data.get('PinNum'))
         content_type = data.get('ComponentType')
-        response = {"message": "Received."}
-        return jsonify(response)
+        return jsonify({"message": "Received."})
 
+    @app.route("/handle-gpio", methods=['POST'])
+    def handle_gpio():
+        data = request.json
+        pinNum = int(data.get('PinNum'))
+        command = data.get('Command')
+        handle_gpio_cmd(pinNum, command)
+        return jsonify({"message": "Received."})
+
+    
     return app
