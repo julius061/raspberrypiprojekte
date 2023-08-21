@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Pi Wecker | Settings</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
+	</head>
+	<body>
+		<div class="navbar">
+			<ul>
+				<li><a href="{{ url_for('index') }}">Home</a></li>
+				<li><a id="active" href="{{ url_for('settings') }}">Settings</a></li>
+			</ul>
+		</div>
+		<h1>RaspberryPi Wecker | Settings</h1>
+
+		<script src="{{ url_for('static', filename='js/alarmClock.js') }}"></script>
+	</body>
+</html>
