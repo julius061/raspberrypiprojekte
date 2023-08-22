@@ -1,3 +1,5 @@
+# CODE BY https://github.com/Freenove/Freenove_Complete_Starter_Kit_for_Raspberry_Pi/blob/main/Code/Python_Code/20.1.1_I2CLCD1602/Adafruit_LCD1602.py
+
 from time import sleep
 
 
