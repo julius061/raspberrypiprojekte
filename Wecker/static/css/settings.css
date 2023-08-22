@@ -1,8 +1,0 @@
-#time-input {
-	display: flex;
-	justify-content: center;
-}
-#alarm-time {
-	position: absolute;
-	top: 50%;
-}
