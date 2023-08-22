@@ -1,0 +1,2 @@
+- Animationen auf dem LCD Display
+- Webserver mit Anmeldeformular, das angemeldeten Nutzer auf LCD aneigt
